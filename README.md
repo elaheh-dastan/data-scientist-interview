@@ -556,7 +556,9 @@ B. Add higher order polynomial terms. (answer)
 C. Increase the weights on regularization terms.
 
 D. Use a subsample of the data.
+
 ![images/bias_var.png](images/bias_var.png)
+
 Bias measures how far off your model’s predictions are from the true values — on average. High bias means your model is systematically wrong — it’s too simple to capture the true relationship between features and target. It underfits the data.
 
 Variance measures how much your model’s predictions change when trained on different samples of the same dataset.
