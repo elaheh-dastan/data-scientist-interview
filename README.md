@@ -549,7 +549,7 @@ D. Monitor sales for longer period of time.
 
 2. You are training a linear regression model on a representative sample in order to predict house prices. Performance tests suggest that the model has high bias and low variance. What action is likely to solve the high bias issue?
 
-A. Collect more labelled data.
+A. Collect more labelled data. (Collecting more data mainly helps reduce variance, not bias.)
 
 B. Add higher order polynomial terms. (answer)
 
@@ -557,6 +557,14 @@ C. Increase the weights on regularization terms.
 
 D. Use a subsample of the data.
 ![images/bias_var.png](images/bias_var.png)
+Bias measures how far off your model’s predictions are from the true values — on average. High bias means your model is systematically wrong — it’s too simple to capture the true relationship between features and target. It underfits the data.
 
+Variance measures how much your model’s predictions change when trained on different samples of the same dataset.
+
+High variance = model is too complex and sensitive to noise in the data → overfitting.
+
+Low variance = model is stable across datasets.
+
+When a model has high bias and low variance, it’s stable but inaccurate.
 
 
