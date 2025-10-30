@@ -570,3 +570,52 @@ Low variance = model is stable across datasets.
 When a model has high bias and low variance, it’s stable but inaccurate.
 
 
+3. You performed a linear fit on a dataset with two variables, x₁ and x₂. The p-value for x₁ is 0.01 and that for x₂ is 0.1. Which statement is false?
+
+Options:
+A. p-value is the probability to find the observed or more extreme value for the test statistic given that the null hypothesis is false. (answer)
+B. p-value is the probability to find the observed or more extreme value for the test statistic given that the null hypothesis is true.
+C. Variable x₂ could have no effect at all on the response variable.
+D. The fitting coefficient of variable x₁ is generally considered statistically significant.
+
+The null hypothesis is basically the “default” or “no change” idea. The p-value tells you how surprising your data would be if the null hypothesis were actually true.
+
+| Variable | p-value | Meaning                                                                                    | Conclusion (at 0.05 level)                                 |
+| -------- | ------- | ------------------------------------------------------------------------------------------ | ---------------------------------------------------------- |
+| **x₁**   | 0.01    | There’s only a 1% chance you’d see such a strong effect from x₁ if it really had no effect | **Significant** → likely x₁ affects y                      |
+| **x₂**   | 0.1     | There’s a 10% chance you’d see such a result if x₂ had no effect                           | **Not significant** → no strong evidence that x₂ affects y |
+
+4. Which metric is not used for evaluating the performance of a regression model?
+
+A. F1-score (answer)
+
+
+B. AIC
+AIC measures how well your model fits the data while penalizing for complexity.
+
+C. R-squared value
+
+R² tells you how much of the variation in your outcome (y) is explained by your model (the predictors).
+
+R² = 0 → your model explains none of the variation (it’s useless)
+
+R² = 1 → your model explains all of the variation (perfect fit)
+
+📊 Example:
+
+Suppose you’re predicting students’ exam scores (y) based on study hours (x₁) and sleep hours (x₂).
+
+If R² = 0.8, that means 80% of the differences in exam scores can be explained by how much they study and sleep. The remaining 20% is due to other factors or random noise.
+
+⚠️ Caveats:
+
+Adding more variables always increases R², even if those variables are useless.
+
+That’s why people often use Adjusted R², which penalizes adding unnecessary predictors.
+
+D. RMSE
+
+
+
+
+
