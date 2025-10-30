@@ -533,7 +533,7 @@ If there is an item, is the same item with a different color its similar item?
 
 People may have different opinions we have to either run a big analysis and see if most people consider this as similar item by either looking at previous actions of our users (or asking them) or let the model learn it we have an embedding for each item different features may have different importance we can give these embeddings to a neural network and get another embedding back this NN can learn to give higher weights to more important features we can train this NN by supervised approach by looking at our service and gather data of which items users chose as similar item.
 
-
-
+## Proxify
+### Technical Test
 
 
