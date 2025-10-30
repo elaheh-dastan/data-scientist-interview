@@ -535,5 +535,28 @@ People may have different opinions we have to either run a big analysis and see 
 
 ## Proxify
 ### Technical Test
+1. A local supermarket organised two weeks of promotions to boost sales. The average daily sales before the campaign is $10,000, which becomes $11,000 during the promotion (average over 2 weeks). Which analysis below is not useful for evaluating whether the increase in sales is statistically significant?
+
+Options:
+
+A. Check the distribution of sales data.
+
+B. Inspect for possible outliers in sales data.
+
+C. Calculate precision of the prediction. (answer)
+
+D. Monitor sales for longer period of time.
+
+2. You are training a linear regression model on a representative sample in order to predict house prices. Performance tests suggest that the model has high bias and low variance. What action is likely to solve the high bias issue?
+
+A. Collect more labelled data.
+
+B. Add higher order polynomial terms. (answer)
+
+C. Increase the weights on regularization terms.
+
+D. Use a subsample of the data.
+![images/bias_var.png](images/bias_var.png)
+
 
 
