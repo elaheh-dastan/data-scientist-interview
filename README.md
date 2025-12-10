@@ -615,6 +615,7 @@ That’s why people often use Adjusted R², which penalizes adding unnecessary p
 
 D. RMSE
 
+6.
 
 
 
