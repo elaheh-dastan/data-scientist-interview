@@ -615,7 +615,20 @@ That’s why people often use Adjusted R², which penalizes adding unnecessary p
 
 D. RMSE
 
-6.
+
+6. Which metric is not used for evaluating the performance of a classification model?
+
+A: Cook’s distance (answer) 
+Cook's distance is a diagnostic from linear regression. It measures how influential a data point is on the fitted regression coefficients (how much the regression fit would change if you removed that point). It's about influence/outliers in regression, not classification performance.
+
+B: Lift curve
+Used in classification (especially marketing/credit risk) to evaluate how much better a model is at identifying positives compared to random selection. It's derived from ranking predicted probabilities.
+
+C: Matthews correlation coefficient
+A strong classification metric based on the confusion matrix. It's especially useful with imbalanced classes.
+
+D: Logarithmic Loss 
+(Log Loss/ Cross-Entropy) measures the quality of predicted probabilities for classification; it heavily penalizes confident wrong predictions and is standard for probabilistic classifiers.
 
 
 
