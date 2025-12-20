@@ -631,6 +631,16 @@ A strong classification metric based on the confusion matrix. It's especially us
 D: Logarithmic Loss 
 (Log Loss/ Cross-Entropy) measures the quality of predicted probabilities for classification; it heavily penalizes confident wrong predictions and is standard for probabilistic classifiers.
 
+7. Not Done yet
 
+Difference between ridge regressor, lasso regressor and elastic net:
+
+A penalty on the size of coefficients.
+
+Ridge Regression (L2 Regularization): Shrink the coefficients toward zero, but never make them exactly zero. Everything matters a bit. When features are similar (correlated), it shares weight among them
+
+Lasso Regression (L1 Regularization): Shrink coefficients — and force some of them to exactly zero. Only a few features matter. Kills some features entirely
+
+Elastic Net is a compromise between Ridge and Lasso. Elastic Net drops unimportant features like Lasso, but behaves smoothly and fairly among related features like Ridge.
 
 
