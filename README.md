@@ -631,7 +631,41 @@ A strong classification metric based on the confusion matrix. It's especially us
 D: Logarithmic Loss 
 (Log Loss/ Cross-Entropy) measures the quality of predicted probabilities for classification; it heavily penalizes confident wrong predictions and is standard for probabilistic classifiers.
 
-7. Not Done yet
+7. Given a dataset containing continuous and discrete variables one wants to train an unsupervised clustering method. Which statement is true?
+
+A: A k-means algorithm can be applied to the current dataset.
+
+B: A k-means algorithm can be applied after casting the discrete variables to integer ones.
+
+C: Hierarchical clustering with Euclidean distance can be applied to the current dataset.
+
+D: Hierarchical clustering with Gower distance can be applied to the current dataset. (Answer)
+
+Gower distance is a similarity/distance measure designed specifically for datasets that contain mixed types of variables.
+
+8.silhouette plot is often used to evaluate clustering methods. What does it mean if the silhouette coefficient of an observation is 0.9?
+
+A: The variance within the cluster of this observation is high.
+
+B: The variance within the cluster of this observation is low.
+
+C: The observation is closer to its own cluster than to other clusters. (Answer)
+
+D: The observation is on the border between different clusters.
+
+The silhouette coefficient ranges from –1 to 1.
+
+- A value close to 1 (e.g., 0.9) means the observation is:
+
+  - Very close to points in its own cluster
+
+  - Far from points in neighboring clusters
+
+- Values near 0 indicate overlap between clusters.
+
+- Negative values indicate likely misclassification.
+
+
 
 Difference between ridge regressor, lasso regressor and elastic net:
 
