@@ -75,7 +75,16 @@ AIC does not provide an absolute measure of a model's quality but rather a relat
 30. What is knowledge distillation? In machine learning, knowledge distillation or model distillation is the process of transferring knowledge from a large model to a smaller one. While large models (such as very deep neural networks or ensembles of many models) have higher knowledge capacity than small models, this capacity might not be fully utilized.
 31. What are transfomers? have you worked with them? transformers architecture was introduced in the paper ” Attention is All You Need”. Transformer Architecture is a model that uses self-attention that transforms one whole sentence into a single sentence. This is a big shift from how older models work step by step, and it helps overcome the challenges seen in models like RNNs and LSTMs. RNN suffers from the vanishing gradient problem which causes long-term memory loss. RNN does the processing of text sequentially, which means if there is a long sentence it can't remember whole of it. With the addition of a few more memory cells and resolving the vanishing gradients issue, the problem regarding long-term memory loss was resolved to some extent. However, the problem with sequential processing remained because RNN was unable to process the intact sentence at once. This issue can’t be addressed in LSTMs due to their sequential design. In LSTMs, we use the static embedding method, which suggests that without knowing the context of a word we embed it to some n-dimensional vector. But if the context changes, the meaning also changes. Transformer architecture consists of: . positional encoding . Position-wise Feedforward Networks . Attention Mechanism and Encoder-Decoder Architecture. The attention mechanism in transformers employs a scaled dot-product approach, where the computation involves scaled dot products between the query, key, and value vectors. This produces weighted values that are then summed to yield the attention output. To enhance the model’s capacity to capture diverse relationships within the input, the multi-head attention mechanism is introduced. This involves applying the attention mechanism multiple times concurrently, each with distinct learned linear projections of the input. The resulting outputs from these parallel computations are concatenated and undergo a linear transformation to generate the final attention result.
 32. Explain difference between Random forest regressor vs xgboost/lightgbm: Random Forest Regressor (Bagging) 👉 Key idea: Reduce variance by averaging many high-variance, low-bias trees. XGBoost / LightGBM: Optimizes a differentiable loss using gradient descent on trees. 👉 Key idea: Reduce bias by adding many weak learners that focus on mistakes. There is no learning rate concept in Random Forest but it exists in XGBoost
+33. explain Support Vector Regressor (SVR): SVR is the regression counterpart of Support Vector Machines (SVM)
 
+Core idea:
+Fit a function that stays within an error margin ε for as many points as possible, and penalize only the points outside that margin.
+
+SVR relies heavily on the kernel trick. 
+
+SVR = “Find the flattest function that is accurate enough for most points, and only care about the hard cases.”
+
+34.
 
 ## Cafebazaar
 
@@ -642,6 +651,7 @@ C: Hierarchical clustering with Euclidean distance can be applied to the current
 D: Hierarchical clustering with Gower distance can be applied to the current dataset. (Answer)
 
 Gower distance is a similarity/distance measure designed specifically for datasets that contain mixed types of variables.
+
 
 8.silhouette plot is often used to evaluate clustering methods. What does it mean if the silhouette coefficient of an observation is 0.9?
 
