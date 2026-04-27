@@ -410,7 +410,7 @@ K-fold cross-validation means to split data into k subsets, and train models on 
 
 • D: Determining weights for the regularization terms of ridge regression.
 
-**My answer is B and C**
+**My answer is B**
 
 An online social media platform has asked you to develop a churn propensity model. You have built a boosted tree model with 500 trees and maximum depth of 50. The AUC value is 0.95 on training data, but only 0.5 on test data. To improve model performance on test data, which step would you recommend to try next?
 
