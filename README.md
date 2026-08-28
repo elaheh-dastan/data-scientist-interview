@@ -6,7 +6,31 @@ put the questions and answers there.
 Now I want to apply for a data scientist position in which unfortunately he has no experience, so I'm making this
 repository and want to put all my practices here.
 
-## Logical
+## Table of Contents
+
+- [Concept Reference](#concept-reference)
+  - [Logical](#logical)
+  - [ML algorithms](#ml-algorithms)
+  - [ROC](#roc)
+  - [SGD, Momentum, Adam](#sgd-momentum-adam)
+  - [Binary cross entropy](#binary-cross-entropy)
+  - [Imputation methods](#imputation-methods)
+  - [Categorical encoding](#categorical-encoding)
+  - [Encoding cyclical continuous features](#encoding-cyclical-continuous-features)
+  - [P-value](#p-value)
+  - [More topics (extra.md)](extra.md)
+- [Interview Experiences](#interview-experiences)
+  - [Cafebazaar](#cafebazaar)
+  - [Digikala](#digikala)
+  - [Apollo Agriculture](#apollo-agriculture)
+  - [Picnic Technologies](#picnic-technologies)
+  - [Apple](#apple)
+  - [Digikala (System Design)](#digikala-system-design)
+  - [Proxify](#proxify)
+
+## Concept Reference
+
+### Logical
 
 1. you have buckets one 5 liters the other 3 liters, measure 4 liters:
 
@@ -15,7 +39,7 @@ repository and want to put all my practices here.
    bucket empty and pour that 1 liter in it then make the 3 liters bucket full again and pour it to the 5 liters bucket
    which had 1 liter inside, so the result is 4 liters of water in the 5 liters bucket.
 
-## ML algorithms
+### ML algorithms
 
 1. Differences between supervised and unsupervised:
    In supervised the data has label
@@ -84,39 +108,7 @@ SVR relies heavily on the kernel trick.
 
 SVR = “Find the flattest function that is accurate enough for most points, and only care about the hard cases.”
 
-## Cafebazaar
-
-I had to answer to a few questions in the first phase of interview for the data scientist position at Cafebazaar, and I
-was rejected because the questions needed deep understanding of linear algebra which I had forgotten, I can't remember
-what they exactly asked for, but I can give you a sense and another important point is that I now write the answer I
-think is true, but I'm not sure so **don't rely on my answers**:<br/>
-
-1. We generated 5 random numbers using uniform distribution from [0, d] and the numbers are 5, 11, 13, 17, 23 find the
-   minimum d with more than 95% probability.
-   ![CI-1](images/CI-1.jpg)
-   So we can write
-   ![CI-2](images/CI-2.jpg)
-2. Given uniform distributions X and Y and the mean 0 and standard deviation 1 for both,
-   what’s the probability of 2X > Y?
-   ![2x > y](images/2xy.jpg)
-   As you see this question is super easy, but I couldn't answer 😂 because I
-   didn't expect these kinds of questions so shout out to you, they ask something like this expect it.
-
-3. What can you say about the rank of the matrix when the number of samples is many more than the number of features?
-   Pay attention the first phase is a test, so there is no one who you can talk to or there is no box in which you can explain
-   what you know if I had the chance I could say that in order to find out a linear regression model I know gradient
-   descent and normal equation and in normal equation we should calculate the inverse of X multiplied by X transpose and
-   this term is not invertible if the number of samples in many more than features or if features have high correlation
-   with each other, but I just could check one answer about the rank I mean they ask for pure linear algebra.
-   Well, I couldn't even remember what the rank of a matrix was. The **rank** of a matrix is the number of **linearly
-   independent** columns (or rows), you can find the rank of a matrix using **echelon**. To be honest I don't have an
-   intuition, but there is a theorem which says the column rank is equal to the row rank, so the first thing we can say is
-   that the rank of this matrix at most will be the min(number of rows, number of columns). In this question the rank will
-   be at most the number of samples.<br/>
-   Full rank means the rank of the matrix is the largest possible number so if your features have high correlation with
-   each other (and the number of features are less than the number of samples) your matrix won't be full rank.
-
-## ROC
+### ROC
 
 This part is not a question asked in any of the interviews, but I had to write it here cause it made me think of my whole
 life decisions. This is the story happened to me which may happen to you too. Once I had to solve a coding challenge, it
@@ -137,7 +129,7 @@ Precision = True Positives / (True Positives + False Positives)<br/>
 it measures the proportion of the data the model classifies as positive is really positive, and the areas under this curve
 can be used as a good metric.
 
-## SGD, Momentum, Adam
+### SGD, Momentum, Adam
 
 These optimizations were not asked in interview, but it's highly important to fully understand them:<br/>
 
@@ -163,11 +155,11 @@ and make the algorithm faster we use what I called "velocity" and "acceleration"
 avoid oscillating by changing the parameters by "V" of derivative of "W" but to be honest I have no intuition for ADAM
 optimization, I've seen the algorithm and this is something I can't understand but is working
 
-## Binary cross entropy
+### Binary cross entropy
 
 ![](images/binary_cross_entropy.png)
 
-## Imputation methods
+### Imputation methods
 
 I can guarantee they will ask you this question. It has some simple answers but make sure you review them before the
 interview:<br/>
@@ -205,7 +197,7 @@ interview:<br/>
    Estimating the parameters of W and H can be achieved by searching around the global (or local) minimum of the quadratic
    cost function F and once it's done, the other missing values can be estimated by the inner product too.
 
-## Categorical encoding
+### Categorical encoding
 
 This is another most repeated questions, how will you transform categorical columns to numerical columns?
 
@@ -258,9 +250,7 @@ base 4
 | 1           | 3      |
 | 2           | 0      |
 
-## Tricky question
-
-## Encoding cyclical continuous features
+### Encoding cyclical continuous features
 
 Let’s explore a simple 24-hour time dataset, we want to convey its cyclical nature to our model.
 
@@ -292,7 +282,65 @@ df.head()
 
 Notice that now, 5 minutes before midnight and 5 minutes after is 10 minutes apart
 
-## Digikala
+### P-value
+The hypothesis that there is no difference between things is called the null hypothesis. The null hypothesis does not require any preliminary data because the only value that represents no difference is 0.
+The closer a p-value is to 0, the more confidence we have that things A and B are different.
+While a small p-value helps us decide if thing A is different from thing B, it does not tell us how different they are.
+A p-value is composed of three parts:
+1. The probability random chance would result in the observation.
+2. The probability of observing something else that is equally rare.
+3. The probability of observing something rarer or more extreme.
+
+### More topics
+
+A few more topics that came up while studying, kept in [extra.md](extra.md) to keep this file shorter:
+
+- Gradient Boost (for regression)
+- XGBoost
+- Cron job
+- A* (path finding)
+- valhalla
+- Map Matching
+- Feature Importance
+- Multi step ahead prediction
+- Great-circle distance
+- Mean
+
+## Interview Experiences
+
+### Cafebazaar
+
+I had to answer to a few questions in the first phase of interview for the data scientist position at Cafebazaar, and I
+was rejected because the questions needed deep understanding of linear algebra which I had forgotten, I can't remember
+what they exactly asked for, but I can give you a sense and another important point is that I now write the answer I
+think is true, but I'm not sure so **don't rely on my answers**:<br/>
+
+1. We generated 5 random numbers using uniform distribution from [0, d] and the numbers are 5, 11, 13, 17, 23 find the
+   minimum d with more than 95% probability.
+   ![CI-1](images/CI-1.jpg)
+   So we can write
+   ![CI-2](images/CI-2.jpg)
+2. Given uniform distributions X and Y and the mean 0 and standard deviation 1 for both,
+   what’s the probability of 2X > Y?
+   ![2x > y](images/2xy.jpg)
+   As you see this question is super easy, but I couldn't answer 😂 because I
+   didn't expect these kinds of questions so shout out to you, they ask something like this expect it.
+
+3. What can you say about the rank of the matrix when the number of samples is many more than the number of features?
+   Pay attention the first phase is a test, so there is no one who you can talk to or there is no box in which you can explain
+   what you know if I had the chance I could say that in order to find out a linear regression model I know gradient
+   descent and normal equation and in normal equation we should calculate the inverse of X multiplied by X transpose and
+   this term is not invertible if the number of samples in many more than features or if features have high correlation
+   with each other, but I just could check one answer about the rank I mean they ask for pure linear algebra.
+   Well, I couldn't even remember what the rank of a matrix was. The **rank** of a matrix is the number of **linearly
+   independent** columns (or rows), you can find the rank of a matrix using **echelon**. To be honest I don't have an
+   intuition, but there is a theorem which says the column rank is equal to the row rank, so the first thing we can say is
+   that the rank of this matrix at most will be the min(number of rows, number of columns). In this question the rank will
+   be at most the number of samples.<br/>
+   Full rank means the rank of the matrix is the largest possible number so if your features have high correlation with
+   each other (and the number of features are less than the number of samples) your matrix won't be full rank.
+
+### Digikala
 
 My interview experience with digikala was much more reasonable than cafebazaar. I was asked any kind of question from
 easy to hard. I had to **code**, know **sql**, know **ml models**, know **statistics**, and the nice thing was that in
@@ -335,21 +383,14 @@ and another one with just four samples, we determine four quartiles for the larg
 
 I had to do a **code challenge** for digikala too which is in a separate repository, check [here](https://github.com/elahe-dastan/digikala-datascientist-interview)
 
-## P-value
-The hypothesis that there is no difference between things is called the null hypothesis. The null hypothesis does not require any preliminary data because the only value that represents no difference is 0.
-The closer a p-value is to 0, the more confidence we have that things A and B are different.
-While a small p-value helps us decide if thing A is different from thing B, it does not tell us how different they are.
-A p-value is composed of three parts:
-1. The probability random chance would result in the observation.
-2. The probability of observing something else that is equally rare.
-3. The probability of observing something rarer or more extreme.
+### Apollo Agriculture
 
-## Apollo Agriculture
-### System Design
+#### System Design
 They had a system to assign credit to farmers, they asked me to design a system to do so.
 
-## Picnic Technologies
-### Screening test questions
+### Picnic Technologies
+
+#### Screening test questions
 You are training a linear regression model on a representative sample in order to predict house prices. Performance tests suggest that the model has an issue of high estimator bias in combination with low estimator variance. What action below is likely to solve the high bias issue?
 
 • A: Collect more labeled data.
@@ -422,23 +463,23 @@ An online social media platform has asked you to develop a churn propensity mode
 
 **The answer is A**
 
-### Screening Code
+#### Screening Code
 write a code to find the nth element of the sequence 0, 1, 1, 2, 3, 5, 8, 13, 12, 7, 10, 8, 9, ....
 
 check [here](./picnic/sum-digit-fibonacci.py)
 
 if you write the sequence, you see it reapeats itself.
 
-### System Design
+#### System Design
 ![](./images/repurches-question.png)
 
 ![](./images/repurches-design-1.png)
 
 ![](./images/repurches-design-2.png)
 
-### Assessment Day
+#### Assessment Day
 
-#### ML Fundamentals Interview
+##### ML Fundamentals Interview
 System design of a payment fraud detection service.
 
 Question: you buy stuff and after getting them you pay, what if you don't!!!
@@ -472,17 +513,16 @@ Block if the person hasn't paid his debt since 3 months ago
 
 The most challenging part of this question is that you don't have a completely trustworthy groundtruth.
 
-
-#### Software Engineering Skills Interview
+##### Software Engineering Skills Interview
 [https://github.com/elahe-dastan/data-scientist-interview/blob/main/picnic/trip-forecast.py](https://github.com/elahe-dastan/data-scientist-interview/blob/main/picnic/trip-forecast.py)
 
-#### Stakeholder Management Interview
+##### Stakeholder Management Interview
 Asking about the projects you've done in your career and try to ask you about the challenges you've solved, how you've solved them and why you didn't do another approach.
 
-#### Closing Interview
+##### Closing Interview
 With VP, not an interview, just talking
 
-## Apple
+### Apple
 First I had a technical interview with my agency company 0+x in which I answered a few ML question like:
 
 What is central limit theorem?
@@ -502,7 +542,6 @@ Name a few loss function:
 •  Mean Absolute Error (MAE)
 
 •  Huber Loss: Combines MSE and MAE to be less sensitive to outliers than MSE.
-
 
 Name a few metrics:
 
@@ -532,7 +571,7 @@ Then I had two or three interviews with Apple itself I don't exactly remember wh
 
 • They gave me a file containing data of some monsthers, we had different features including categorical features and the lable defining the type of the monster and I was asked to write a code to classify these monsters. check [here](https://github.com/elahe-dastan/data-scientist-interview/blob/main/apple/classify-monsters.py)
 
-## Digikala (System Design)
+### Digikala (System Design)
 Suppose you want to build "similar items" for digikala from scratch, how do you approach it? 
 
 First things first, we need to find features to help us find similar items, what do we have? I can think of the category or some features we force the customer to fill then comments and rating of the item and last but not least the text and the image of the item. I search for the similar item in the same category and I create a long vector containing the feature the customer fill (e.g. the size of the bottle or the color of it) then it comes to transforming the text and the image to vectors and concating them to the initial one. To embed text in word level we can use Word2Vec (CBOW and Skip-gram) and better to embed it in sentence level we can use transformers for example when Sentence-BERT was released. It outperformed all previous approaches to semantic textual similarity tasks and allowed the calculation of sentence embeddings. To embed images we can use convolutional NN models like ResNet. 
@@ -541,8 +580,9 @@ If there is an item, is the same item with a different color its similar item?
 
 People may have different opinions we have to either run a big analysis and see if most people consider this as similar item by either looking at previous actions of our users (or asking them) or let the model learn it we have an embedding for each item different features may have different importance we can give these embeddings to a neural network and get another embedding back this NN can learn to give higher weights to more important features we can train this NN by supervised approach by looking at our service and gather data of which items users chose as similar item.
 
-## Proxify
-### Technical Test
+### Proxify
+
+#### Technical Test
 1. A local supermarket organised two weeks of promotions to boost sales. The average daily sales before the campaign is $10,000, which becomes $11,000 during the promotion (average over 2 weeks). Which analysis below is not useful for evaluating whether the increase in sales is statistically significant?
 
 Options:
@@ -577,7 +617,6 @@ Low variance = model is stable across datasets.
 
 When a model has high bias and low variance, it’s stable but inaccurate.
 
-
 3. You performed a linear fit on a dataset with two variables, x₁ and x₂. The p-value for x₁ is 0.01 and that for x₂ is 0.1. Which statement is false?
 
 Options:
@@ -596,7 +635,6 @@ The null hypothesis is basically the “default” or “no change” idea. The 
 4. Which metric is not used for evaluating the performance of a regression model?
 
 A. F1-score (answer)
-
 
 B. AIC
 AIC measures how well your model fits the data while penalizing for complexity.
@@ -623,7 +661,6 @@ That’s why people often use Adjusted R², which penalizes adding unnecessary p
 
 D. RMSE
 
-
 6. Which metric is not used for evaluating the performance of a classification model?
 
 A: Cook’s distance (answer) 
@@ -649,7 +686,6 @@ C: Hierarchical clustering with Euclidean distance can be applied to the current
 D: Hierarchical clustering with Gower distance can be applied to the current dataset. (Answer)
 
 Gower distance is a similarity/distance measure designed specifically for datasets that contain mixed types of variables.
-
 
 8. Silhouette plot is often used to evaluate clustering methods. What does it mean if the silhouette coefficient of an observation is 0.9?
 
@@ -682,5 +718,3 @@ Ridge Regression (L2 Regularization): Shrink the coefficients toward zero, but n
 Lasso Regression (L1 Regularization): Shrink coefficients — and force some of them to exactly zero. Only a few features matter. Kills some features entirely
 
 Elastic Net is a compromise between Ridge and Lasso. Elastic Net drops unimportant features like Lasso, but behaves smoothly and fairly among related features like Ridge.
-
-
