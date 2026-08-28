@@ -57,9 +57,9 @@ repository and want to put all my practices here.
     ![](images/metrics_6.jpg)
     ![](images/metrics_7.jpg)
 
-27.What is the difference between RMSE and MSE? While MSE gives a measure of the average squared error, RMSE provides a measure of the average error in the same units as the original data, making it more interpretable in practical terms.
+27. What is the difference between RMSE and MSE? While MSE gives a measure of the average squared error, RMSE provides a measure of the average error in the same units as the original data, making it more interpretable in practical terms.
 
-28.What is AIC (Akaike Information Criterion)? The AIC balances the trade-off between the goodness of fit and the complexity of the model. 
+28. What is AIC (Akaike Information Criterion)? The AIC balances the trade-off between the goodness of fit and the complexity of the model. 
 
 AIC=2k−2ln(L)
 
@@ -83,8 +83,6 @@ Fit a function that stays within an error margin ε for as many points as possib
 SVR relies heavily on the kernel trick. 
 
 SVR = “Find the flattest function that is accurate enough for most points, and only care about the hard cases.”
-
-34.
 
 ## Cafebazaar
 
@@ -139,7 +137,7 @@ Precision = True Positives / (True Positives + False Positives)<br/>
 it measures the proportion of the data the model classifies as positive is really positive, and the areas under this curve
 can be used as a good metric.
 
-# SGD, Momentum, Adam
+## SGD, Momentum, Adam
 
 These optimizations were not asked in interview, but it's highly important to fully understand them:<br/>
 
@@ -165,11 +163,11 @@ and make the algorithm faster we use what I called "velocity" and "acceleration"
 avoid oscillating by changing the parameters by "V" of derivative of "W" but to be honest I have no intuition for ADAM
 optimization, I've seen the algorithm and this is something I can't understand but is working
 
-# binary cross entropy
+## Binary cross entropy
 
 ![](images/binary_cross_entropy.png)
 
-# Imputation methods
+## Imputation methods
 
 I can guarantee they will ask you this question. It has some simple answers but make sure you review them before the
 interview:<br/>
@@ -207,7 +205,7 @@ interview:<br/>
    Estimating the parameters of W and H can be achieved by searching around the global (or local) minimum of the quadratic
    cost function F and once it's done, the other missing values can be estimated by the inner product too.
 
-# Categorical encoding
+## Categorical encoding
 
 This is another most repeated questions, how will you transform categorical columns to numerical columns?
 
@@ -260,7 +258,7 @@ base 4
 | 1           | 3      |
 | 2           | 0      |
 
-# Tricky question
+## Tricky question
 
 ## Encoding cyclical continuous features
 
@@ -653,7 +651,7 @@ D: Hierarchical clustering with Gower distance can be applied to the current dat
 Gower distance is a similarity/distance measure designed specifically for datasets that contain mixed types of variables.
 
 
-8.silhouette plot is often used to evaluate clustering methods. What does it mean if the silhouette coefficient of an observation is 0.9?
+8. Silhouette plot is often used to evaluate clustering methods. What does it mean if the silhouette coefficient of an observation is 0.9?
 
 A: The variance within the cluster of this observation is high.
 
@@ -675,11 +673,7 @@ The silhouette coefficient ranges from –1 to 1.
 
 - Negative values indicate likely misclassification.
 
-9.
-
-
-
-Difference between ridge regressor, lasso regressor and elastic net:
+9. Difference between ridge regressor, lasso regressor and elastic net:
 
 A penalty on the size of coefficients.
 
