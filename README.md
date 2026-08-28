@@ -532,7 +532,7 @@ Then I had two or three interviews with Apple itself I don't exactly remember wh
 
 • They gave me a file containing data of some monsthers, we had different features including categorical features and the lable defining the type of the monster and I was asked to write a code to classify these monsters. check [here](https://github.com/elahe-dastan/data-scientist-interview/blob/main/apple/classify-monsters.py)
 
-## Digikala
+## Digikala (System Design)
 Suppose you want to build "similar items" for digikala from scratch, how do you approach it? 
 
 First things first, we need to find features to help us find similar items, what do we have? I can think of the category or some features we force the customer to fill then comments and rating of the item and last but not least the text and the image of the item. I search for the similar item in the same category and I create a long vector containing the feature the customer fill (e.g. the size of the bottle or the color of it) then it comes to transforming the text and the image to vectors and concating them to the initial one. To embed text in word level we can use Word2Vec (CBOW and Skip-gram) and better to embed it in sentence level we can use transformers for example when Sentence-BERT was released. It outperformed all previous approaches to semantic textual similarity tasks and allowed the calculation of sentence embeddings. To embed images we can use convolutional NN models like ResNet. 
