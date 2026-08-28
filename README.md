@@ -6,6 +6,9 @@ put the questions and answers there.
 Now I want to apply for a data scientist position in which unfortunately he has no experience, so I'm making this
 repository and want to put all my practices here.
 
+> [!NOTE]
+> These are personal, self-written interview notes. Answers reflect my own understanding at the time — treat this as a study log, not verified reference material.
+
 ## Table of Contents
 
 - [Concept Reference](#concept-reference)
@@ -29,6 +32,19 @@ repository and want to put all my practices here.
   - [Proxify](#proxify)
 
 ## Concept Reference
+
+| Topic | What's covered |
+| --- | --- |
+| [Logical](#logical) | A classic bucket-measuring brain teaser |
+| [ML algorithms](#ml-algorithms) | ~33 rapid-fire ML/stats questions — bias-variance, feature selection, transformers, AIC, RMSE vs. MSE, and more |
+| [ROC](#roc) | Why ROC-AUC is misleading on imbalanced datasets, and what to use instead |
+| [SGD, Momentum, Adam](#sgd-momentum-adam) | Intuition for stochastic gradient descent, momentum, and Adam |
+| [Binary cross entropy](#binary-cross-entropy) | Reference diagram |
+| [Imputation methods](#imputation-methods) | Simple → medium → pro strategies for missing values, including MICE and matrix factorization |
+| [Categorical encoding](#categorical-encoding) | Ordinal/one-hot encoding through hashing and base-N encoding |
+| [Encoding cyclical continuous features](#encoding-cyclical-continuous-features) | Sine/cosine transform for cyclical time features, with code |
+| [P-value](#p-value) | What a p-value actually represents |
+| [More topics (extra.md)](extra.md) | Gradient boosting, XGBoost, A*, map matching, feature importance, and more |
 
 ### Logical
 
@@ -109,6 +125,9 @@ SVR relies heavily on the kernel trick.
 SVR = “Find the flattest function that is accurate enough for most points, and only care about the hard cases.”
 
 ### ROC
+
+> [!TIP]
+> ROC-AUC is misleading on imbalanced datasets because the false positive rate stays tiny when negatives dominate. Use precision (or a precision-recall curve) instead.
 
 This part is not a question asked in any of the interviews, but I had to write it here cause it made me think of my whole
 life decisions. This is the story happened to me which may happen to you too. Once I had to solve a coding challenge, it
@@ -252,6 +271,9 @@ base 4
 
 ### Encoding cyclical continuous features
 
+> [!TIP]
+> Represent cyclical time as a (sin, cos) pair instead of a raw number, so 23:55 and 00:05 end up close together instead of ~24 hours apart.
+
 Let’s explore a simple 24-hour time dataset, we want to convey its cyclical nature to our model.
 
 | Seconds Past Midnight |
@@ -308,12 +330,24 @@ A few more topics that came up while studying, kept in [extra.md](extra.md) to k
 
 ## Interview Experiences
 
+| Company | Stage(s) covered | Topics | Outcome (as stated) |
+| --- | --- | --- | --- |
+| [Cafebazaar](#cafebazaar) | First-round test | Confidence intervals, probability, linear algebra (matrix rank) | Rejected |
+| [Digikala](#digikala) | General interview + take-home code challenge | Bias/variance, bagging vs. boosting, distributions, Q-Q plot, Spark, Pythagoras proof | — |
+| [Apollo Agriculture](#apollo-agriculture) | System design | Credit-scoring system for farmers | — |
+| [Picnic Technologies](#picnic-technologies) | Screening quiz → screening code → system design → assessment day (ML, software engineering, stakeholder, closing) | Bias/variance, cross-validation, fraud-detection system design, trip-forecast API design | — |
+| [Apple](#apple) | Agency screen + 2-3 onsite rounds | Loss functions, metrics, embeddings, BERT fine-tuning, TF-IDF & classification coding challenges | — |
+| [Digikala (System Design)](#digikala-system-design) | System design | "Similar items" recommendation design | — |
+| [Proxify](#proxify) | Technical test (multiple choice) | Statistical significance, bias/variance, p-values, regression/classification metrics, clustering | — |
+
 ### Cafebazaar
 
 I had to answer to a few questions in the first phase of interview for the data scientist position at Cafebazaar, and I
-was rejected because the questions needed deep understanding of linear algebra which I had forgotten, I can't remember
-what they exactly asked for, but I can give you a sense and another important point is that I now write the answer I
-think is true, but I'm not sure so **don't rely on my answers**:<br/>
+was rejected because the questions needed deep understanding of linear algebra which I had forgotten. I can't remember
+what they exactly asked for, but I can give you a sense of it:<br/>
+
+> [!CAUTION]
+> I now write the answer I think is true, but I'm not sure — don't rely on my answers.
 
 1. We generated 5 random numbers using uniform distribution from [0, d] and the numbers are 5, 11, 13, 17, 23 find the
    minimum d with more than 95% probability.
@@ -468,7 +502,7 @@ write a code to find the nth element of the sequence 0, 1, 1, 2, 3, 5, 8, 13, 12
 
 check [here](./picnic/sum-digit-fibonacci.py)
 
-if you write the sequence, you see it reapeats itself.
+if you write the sequence, you see it repeats itself.
 
 #### System Design
 ![](./images/repurches-question.png)
@@ -653,11 +687,8 @@ Suppose you’re predicting students’ exam scores (y) based on study hours (x�
 
 If R² = 0.8, that means 80% of the differences in exam scores can be explained by how much they study and sleep. The remaining 20% is due to other factors or random noise.
 
-⚠️ Caveats:
-
-Adding more variables always increases R², even if those variables are useless.
-
-That’s why people often use Adjusted R², which penalizes adding unnecessary predictors.
+> [!WARNING]
+> Caveat: adding more variables always increases R², even if those variables are useless — that's why people often use Adjusted R², which penalizes adding unnecessary predictors.
 
 D. RMSE
 
