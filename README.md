@@ -89,13 +89,45 @@ repository and want to put all my practices here.
 24. calculate entropy [0,0,0,1,1,1,1,1]
 25. What is the standard of the mean?
 26. What is Mean Reciprocal Rank?
+
     ![](images/metrics_1.jpg)
-    ![](images/metrics_2.jpg)
-    ![](images/metrics_3.jpg)
-    ![](images/metrics_4.jpg)
-    ![](images/metrics_5.jpg)
+
+    $$\text{Recall @ } k = \frac{\text{true Positives}}{\text{true Positives} + \text{false Negatives}} = \frac{\text{Positives truly predicted}}{\text{all Positives}}$$
+
+    $$\text{MRR @ } k = \frac{1}{Q} \sum_{q=1}^{Q} \frac{1}{rank_q}$$
+
+    - $Q$ = number of queries
+    - $rank_q$ = rank of the first relevant item for query $q$
+
+    $$\text{Precision @ } k = \frac{\text{true Positives}}{\text{true Positives} + \text{false Positives}} = \frac{\text{truly predicted as positive}}{\text{predicted as positive (everything that was returned)}}$$
+
+    $$\text{AP @ } k = \frac{\sum_{k=1}^{K} \left(\text{Precision @ } k \times rel_k\right)}{\text{\# relevant results}}$$
+
+    where $rel_k$ is 0 or 1.
+
+    $$\text{MAP @ } k = \frac{1}{Q} \sum_{q=1}^{Q} \text{AP @ } k_q$$
+
+    $$\text{CG @ } k = \sum_{k=1}^{K} rel_k$$
+
+    CG (cumulative gain) is order-unaware; it requires data to be perfectly labelled.
+
+    $$\text{DCG @ } k = \sum_{k=1}^{K} \frac{rel_k}{\log_2(1+k)}$$
+
+    $\log_2(1+k)$ is a penalty value. DCG's values don't have a fixed range — it depends on the range of relevance
+    scores that we've assigned, which makes interpreting the numbers very difficult.
+
+    $$\text{NDCG @ } k = \frac{\text{DCG @ } k}{\text{IDCG @ } k}$$
+
+    IDCG is the ideal (best possible) DCG for the query. NDCG needs data to be perfectly labelled.
+
+    Recall and sensitivity are the same.
+
+    $$\text{Specificity} = \frac{\text{True Negatives}}{\text{True Negatives} + \text{False Positives}} = \frac{\text{truly predicted as negative}}{\text{predicted as negative (everything that was not returned)}}$$
+
     ![](images/metrics_6.jpg)
-    ![](images/metrics_7.jpg)
+
+    ROC curves make it easy to identify the best threshold for making a decision. AUC can help you decide which
+    categorisation method is better.
 
 27. What is the difference between RMSE and MSE? While MSE gives a measure of the average squared error, RMSE provides a measure of the average error in the same units as the original data, making it more interpretable in practical terms.
 
@@ -185,7 +217,7 @@ optimization, I've seen the algorithm and this is something I can't understand b
 
 ### Binary cross entropy
 
-![](images/binary_cross_entropy.png)
+$$H_p(q) = -\frac{1}{N} \sum_{i=1}^{N} y_i \cdot \log(p(y_i)) + (1 - y_i) \cdot \log(1 - p(y_i))$$
 
 ### Imputation methods
 
@@ -220,8 +252,17 @@ interview:
    m is the number of categories and it contains so many Nulls. Consider a positive integer k <= min(n,m), the main
    objective is to find matrix factors W with size n*k and H is size k\*m in which R is close to WH. As these matrices are
    completed, the predicted rating of user u to item i (r at index u and i) can be estimated by the inner product of the
-   corresponding user-item feature vector pairs.
-   ![](images/MF.jpg)
+   corresponding user-item feature vector pairs. The cost function can be defined as follows:
+
+   $$F(W, H) = \frac{1}{2} \lVert R - WH \rVert^2, \quad \text{s.t. } W, H \geq 0$$
+
+   The goal is to find the unknown parameters of W and H minimizing the cost function, and because matrix R contains
+   missing values the cost function should be reformulated to sum only over the known entries:
+
+   $$F(W, H) = \frac{1}{2} \sum_{(u,i) \in \Omega} \left(r_{u,i} - \sum_{l=1}^{k} w_{u,l} h_{l,i}\right)^2, \quad \text{s.t. } W, H \geq 0$$
+
+   where $\Omega$ is the set of known entries of R.
+
    Estimating the parameters of W and H can be achieved by searching around the global (or local) minimum of the quadratic
    cost function F and once it's done, the other missing values can be estimated by the inner product too.
 
@@ -360,8 +401,16 @@ what they exactly asked for, but I can give you a sense of it:
 
 1. We generated 5 random numbers using uniform distribution from [0, d] and the numbers are 5, 11, 13, 17, 23 find the
    minimum d with more than 95% probability.
-   ![CI-1](images/CI-1.jpg)
-   So we can write
+
+   $$CI = \bar{x} \pm z\frac{s}{\sqrt{n}}$$
+
+   - $CI$ = confidence interval
+   - $\bar{x}$ = sample mean
+   - $z$ = confidence level value
+   - $s$ = sample standard deviation
+   - $n$ = sample size
+
+   So we can write:
    ![CI-2](images/CI-2.jpg)
 2. Given uniform distributions X and Y and the mean 0 and standard deviation 1 for both,
    what’s the probability of 2X > Y?
