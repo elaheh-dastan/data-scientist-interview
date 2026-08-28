@@ -1,4 +1,4 @@
-# Classifying monsters 
+# Classifying monsters
 #
 # You need to classify monsters into being Ghosts, Goblins, or Ghouls
 #
@@ -18,29 +18,28 @@
 
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, classification_report
+from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OrdinalEncoder
 
-
-data_file_path = '/home/coderpad/data/monsters.csv'
-
+data_file_path = "/home/coderpad/data/monsters.csv"
 
 df = pd.read_csv(data_file_path)
+
 enc = OrdinalEncoder()
-df[['color', 'type']] = enc.fit_transform(df[['color', 'type']])
+df[["color", "type"]] = enc.fit_transform(df[["color", "type"]])
 
-X = df[['bone_length', 'rotting_flesh', 'hair_length', 'has_soul', 'color']]
-y = df['type']
+X = df[["bone_length", "rotting_flesh", "hair_length", "has_soul", "color"]]
+y = df["type"]
 
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
 
-rfc = RandomForestClassifier()
-rfc.fit(X, y)
+rfc = RandomForestClassifier(random_state=42)
+rfc.fit(X_train, y_train)
 
-rfc.pre
+y_pred = rfc.predict(X_test)
 
-
-
-# lines = []
-# with open(data_file_path) as f:
-#     lines = f.readlines()
-
-# print(lines)
+print(f"accuracy: {accuracy_score(y_test, y_pred):.3f}")
+print(classification_report(y_test, y_pred, target_names=enc.categories_[1]))
