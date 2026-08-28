@@ -101,7 +101,7 @@ repository and want to put all my practices here.
 
     $$\text{Precision @ } k = \frac{\text{true Positives}}{\text{true Positives} + \text{false Positives}} = \frac{\text{truly predicted as positive}}{\text{predicted as positive (everything that was returned)}}$$
 
-    $$\text{AP @ } k = \frac{\sum_{k=1}^{K} \left(\text{Precision @ } k \times rel_k\right)}{\text{\# relevant results}}$$
+    $$\text{AP @ } k = \frac{\sum_{k=1}^{K} \left(\text{Precision @ } k \times rel_k\right)}{\text{number of relevant results}}$$
 
     where $rel_k$ is 0 or 1.
 
@@ -677,7 +677,7 @@ People may have different opinions we have to either run a big analysis and see 
 ### Proxify
 
 #### Technical Test
-1. A local supermarket organised two weeks of promotions to boost sales. The average daily sales before the campaign is $10,000, which becomes $11,000 during the promotion (average over 2 weeks). Which analysis below is not useful for evaluating whether the increase in sales is statistically significant?
+1. A local supermarket organised two weeks of promotions to boost sales. The average daily sales before the campaign is \$10,000, which becomes \$11,000 during the promotion (average over 2 weeks). Which analysis below is not useful for evaluating whether the increase in sales is statistically significant?
 
 Options:
 
