@@ -31,32 +31,44 @@
 # The file is called /home/coderpad/data/song_tag_assignments
 import math
 
-with open('/home/coderpad/data/song_tag_assignments') as f:
-    lines = [line for line in f]
+data_file_path = "/home/coderpad/data/song_tag_assignments"
 
-d = {}
-# n = number of lines m number of words O(n*m)
-for line in lines:
-    words = set(line.split()[1:])
-    for word in words:
-        if word in d:
-            d[word] = d[word] + 1
-        else:
-            d[word] = 1
 
-# n = number of lines m number of words O(n*m)
-for line in lines:
-    words = line.split()[1:]
-    TF = {}
-    for word in words:
-        if word in TF:
-            TF[word] = TF[word] + 1/len(words)
-        else:
-            TF[word] = 1/len(words)
-    
+def load_songs(path: str) -> dict[str, list[str]]:
+    songs = {}
+    with open(path) as f:
+        for line in f:
+            song_id, *tags = line.split()
+            songs[song_id] = tags
+    return songs
 
-TFIDF = {}
-for word in d:
-    TFIDF[word] = math.log(len(lines) / d[word]) * TF[word]
 
-print(TFIDF)
+def compute_tfidf(songs: dict[str, list[str]]) -> dict[str, dict[str, float]]:
+    # number of songs each tag appears in, O(n*m)
+    document_frequency: dict[str, int] = {}
+    for tags in songs.values():
+        for tag in set(tags):
+            document_frequency[tag] = document_frequency.get(tag, 0) + 1
+
+    num_songs = len(songs)
+
+    # TF and TFIDF per song, O(n*m)
+    tfidf: dict[str, dict[str, float]] = {}
+    for song_id, tags in songs.items():
+        term_frequency: dict[str, float] = {}
+        for tag in tags:
+            term_frequency[tag] = term_frequency.get(tag, 0) + 1 / len(tags)
+
+        tfidf[song_id] = {
+            tag: tf * math.log(num_songs / document_frequency[tag])
+            for tag, tf in term_frequency.items()
+        }
+
+    return tfidf
+
+
+if __name__ == "__main__":
+    songs = load_songs(data_file_path)
+    for song_id, weights in compute_tfidf(songs).items():
+        weighted_tags = " ".join(f"{tag}:{weight:.2f}" for tag, weight in weights.items())
+        print(f"{song_id} {weighted_tags}")
