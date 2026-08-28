@@ -1,8 +1,8 @@
-# you can write to stdout for debugging purposes, e.g.
-# print("this is a debug message")
+# Given an array A of N integers, find the smallest positive integer
+# (greater than 0) that does not occur in A.
 
-def solution(A):
-    # Implement your solution here
+
+def solution(A: list[int]) -> int:
     A.sort()
     former_positive = 0
     for element in A:
@@ -10,14 +10,12 @@ def solution(A):
             continue
         if former_positive == element:
             continue
-        if former_positive == (element - 1):
+        if former_positive == element - 1:
             former_positive = element
             continue
         return former_positive + 1
     return former_positive + 1
 
 
-
-
-instance = solution([13, -1, 0,1, 2,4,5, -5])
-print(instance)
+if __name__ == "__main__":
+    print(solution([13, -1, 0, 1, 2, 4, 5, -5]))
