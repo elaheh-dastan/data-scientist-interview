@@ -135,33 +135,42 @@ was an imbalanced dataset, and I had to train a classifier. As you can guess pre
 problem, cause even always predicting false gives you a high prediction. Then I found out that recall is as important as
 precision, and the first thing popped to my mind was F1-score but then in my searches I heard about another metric called
 ROC_AUC which was claimed to work well for an imbalanced dataset. That's wrong, in ROC_AUC we are calculating the area
-under the receiver operating characteristic curve. In this curve the y-axis is the sensitivity or true positive rate:<br/>
-True Positive Rate = True Positives / (True Positives + False Negatives)<br/>
-It measures the proportion of the positive data that we classify correctly. The x-axis is the false positive rate:<br/>
-False Positive Rate = False Positives / (False Positives + True Negatives)<br/>
+under the receiver operating characteristic curve. In this curve the y-axis is the sensitivity or true positive rate:
+
+`True Positive Rate = True Positives / (True Positives + False Negatives)`
+
+It measures the proportion of the positive data that we classify correctly. The x-axis is the false positive rate:
+
+`False Positive Rate = False Positives / (False Positives + True Negatives)`
+
 it measures the proportion of the negative data that we classify as positive, so if your dataset is highly imbalanced, and
 most of the data is labeled negative then the number of True Negative samples can affect the whole curve, if the model
 classifies all samples as negative then the number of True Negative will be so large and False Positive Rate will be so
 small, and it assumes the model is so good so this metric is not good at all for imbalanced dataset classification. To
-solve it, we should use precision instead of false positive rate:<br/>
-Precision = True Positives / (True Positives + False Positives)<br/>
+solve it, we should use precision instead of false positive rate:
+
+`Precision = True Positives / (True Positives + False Positives)`
+
 it measures the proportion of the data the model classifies as positive is really positive, and the areas under this curve
 can be used as a good metric.
 
 ### SGD, Momentum, Adam
 
-These optimizations were not asked in interview, but it's highly important to fully understand them:<br/>
+These optimizations were not asked in interview, but it's highly important to fully understand them:
 
 Stochastic Gradient Descent: In regular gradient descent we should bring whole the training dataset to our calculations
 which will be so much if our dataset is so large and our model has so many parameters. In this situation we can use
-SGD, this algorithm stochastically chooses a mini batch of the dataset in each step and does the calculation.</br>
+SGD, this algorithm stochastically chooses a mini batch of the dataset in each step and does the calculation.
 
 Momentum: I always think about this optimization with a physics intuition. The problem is that we want to make gradient
-descent faster and avoid oscillation. We change the calculations this way:<br/>
-"V" of derivative of "W" (parameters of the model) is equal to "B" (hyper parameter) multiplied by "V" of
-derivative of "W" plus derivative of "W".<br/>
-Then "W" in each step is updated this way:<br/>
-"W" will be equal to "W" minus learning rate multiplied by "V" of derivative of "W"<br/>
+descent faster and avoid oscillation. We change the calculations this way:
+
+`"V" of derivative of "W" (parameters of the model) is equal to "B" (hyper parameter) multiplied by "V" of derivative of "W" plus derivative of "W"`
+
+Then "W" in each step is updated this way:
+
+`"W" will be equal to "W" minus learning rate multiplied by "V" of derivative of "W"`
+
 In here I see "V" as velocity and derivative of "W" as acceleration. As the equations show if faster move in one
 dimension is needed then the acceleration makes velocity bigger and bigger each step, and the parameters of the model will
 be updated faster and faster and if one dimension oscillate in regular gradient descent in this algorithm acceleration
@@ -181,7 +190,7 @@ optimization, I've seen the algorithm and this is something I can't understand b
 ### Imputation methods
 
 I can guarantee they will ask you this question. It has some simple answers but make sure you review them before the
-interview:<br/>
+interview:
 
 #### Simple
 
@@ -199,7 +208,7 @@ interview:<br/>
 
 1. Mice (Multivariate Imputation By Chained Equations)algorithm: If you've gotten the idea of predicting the Null values
    by regression (part 3 of Medium) this algorithm will be super easy. Most probably more than just one column in your
-   dataset contains Null values:<br/>
+   dataset contains Null values:
    1. Replace the Null values by the mean of their column.
    2. Go through the columns and for each of them predict the Null values by regression (And other columns don't contain
       Nulls).
@@ -286,7 +295,7 @@ Let’s explore a simple 24-hour time dataset, we want to convey its cyclical na
 | 400                   |
 
 we want our machine learning model to see that 23:55 and 00:05 are 10 minutes apart, but as it stands, those times will
-appear to be 23 hours and 50 minutes apart!<br/>
+appear to be 23 hours and 50 minutes apart!
 
 Here's the trick: we will create two new features, deriving a sine transform and cosine transform of the
 seconds-past-midnight feature. We can forget the raw “seconds” column from now on.
@@ -344,7 +353,7 @@ A few more topics that came up while studying, kept in [extra.md](extra.md) to k
 
 I had to answer to a few questions in the first phase of interview for the data scientist position at Cafebazaar, and I
 was rejected because the questions needed deep understanding of linear algebra which I had forgotten. I can't remember
-what they exactly asked for, but I can give you a sense of it:<br/>
+what they exactly asked for, but I can give you a sense of it:
 
 > [!CAUTION]
 > I now write the answer I think is true, but I'm not sure — don't rely on my answers.
@@ -370,7 +379,8 @@ what they exactly asked for, but I can give you a sense of it:<br/>
    independent** columns (or rows), you can find the rank of a matrix using **echelon**. To be honest I don't have an
    intuition, but there is a theorem which says the column rank is equal to the row rank, so the first thing we can say is
    that the rank of this matrix at most will be the min(number of rows, number of columns). In this question the rank will
-   be at most the number of samples.<br/>
+   be at most the number of samples.
+
    Full rank means the rank of the matrix is the largest possible number so if your features have high correlation with
    each other (and the number of features are less than the number of samples) your matrix won't be full rank.
 
@@ -379,7 +389,7 @@ what they exactly asked for, but I can give you a sense of it:<br/>
 My interview experience with digikala was much more reasonable than cafebazaar. I was asked any kind of question from
 easy to hard. I had to **code**, know **sql**, know **ml models**, know **statistics**, and the nice thing was that in
 each of them the understanding was much more important than answering completely and all the questions were example based
-again I can't remember every detail but here's what I remember:<br/>
+again I can't remember every detail but here's what I remember:
 
 1. bias/variance tradeoff. not only the meaning, but I had to explain it in different situations for example: When you
    are using a random forest instead of a decision tree, what are you doing about bias/variance? I'm reducing variance.
@@ -396,21 +406,22 @@ again I can't remember every detail but here's what I remember:<br/>
 
 4. Do you know what q-q plot is? This question was great although I couldn't answer. Here it is, what it tries to understand
    is whether a dataset is normally distributed or uniformly distributed or ... or if two datasets' distribution is the
-   same. Assume you have a dataset with fifteen samples, and you wonder if this dataset is normally distributed,<br/>
-   Step1 : Give each point its own quantile<br/>
-   Step2 : Get yourself a normal curve(any normal curve will do)<br/>
-   Step3 : Add the same number of quantiles to the curve as you created for the data(here 15)(For the normal curve, "
-   equal sized groups" means that there is an equal probability of observing a value within each group this means that
-   groups on the edge must be wider and groups in the middle are narrower)<br/>
-   Step4 : Now plot q-q graph : The plot contains dots showing where the quantiles from our dataset intersected with the
-   quantiles from the distribution.
-   Step5 : If the data were distributed like the distribution we selected, most of the points would be on a straight line.
+   same. Assume you have a dataset with fifteen samples, and you wonder if this dataset is normally distributed:
+
+   1. Give each point its own quantile.
+   2. Get yourself a normal curve (any normal curve will do).
+   3. Add the same number of quantiles to the curve as you created for the data (here 15). For the normal curve, "equal
+      sized groups" means that there is an equal probability of observing a value within each group; this means that
+      groups on the edge must be wider and groups in the middle are narrower.
+   4. Now plot the q-q graph: the plot contains dots showing where the quantiles from our dataset intersected with the
+      quantiles from the distribution.
+   5. If the data were distributed like the distribution we selected, most of the points would be on a straight line.
 
 You can also use q-q plot to see if two datasets follow the same distribution: assume we have a dataset with 15 samples
 and another one with just four samples, we determine four quartiles for the larger dataset and compare those
 
-5. The next question was if I had ever worked with spark? Let's do it<br/>
-   Check [here](https://github.com/elahe-dastan/jaraghe)
+5. The next question was if I had ever worked with spark? Let's do it:
+   check [here](https://github.com/elahe-dastan/jaraghe)
 
 6. Prove Pythagoras.
    ![proof](images/pythagoras.jpg)

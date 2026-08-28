@@ -43,10 +43,11 @@ Cron is so amazing
 # A\* (path finding)
 
 In each step A\* picks the node according to a value 'f' which is equal to the sum of 'g' and 'h', it picks the node
-having the lowest 'f'.<br/>
-g(n) is the cost of the path from the start node to n.<br/>
-h(n) is a heuristic that estimates the cost of the cheapest path from n to the target node. (this heuristic can be the
-length of a straight line from the node n to the target)
+having the lowest 'f':
+
+- g(n) is the cost of the path from the start node to n.
+- h(n) is a heuristic that estimates the cost of the cheapest path from n to the target node (this heuristic can be the
+  length of a straight line from the node n to the target).
 
 # valhalla
 
@@ -55,7 +56,8 @@ Routing engine: [valhalla](https://github.com/valhalla/valhalla) implementing A\
 # Map Matching
 
 Taking in raw GPS signals (which are so noisy and sparse because of high buildings and resident vehicles) and mapping
-them to road segments that the GPS signals actually correspond to.<br/>
+them to road segments that the GPS signals actually correspond to.
+
 **Input:** GPS Signal
 
 1. Latitude
