@@ -95,12 +95,12 @@ think is true, but I'm not sure so **don't rely on my answers**:<br/>
 
 1. We generated 5 random numbers using uniform distribution from [0, d] and the numbers are 5, 11, 13, 17, 23 find the
    minimum d with more than 95% probability.
-   ![CI-1](CI-1.jpg)
+   ![CI-1](images/CI-1.jpg)
    So we can write
-   ![CI-2](CI-2.jpg)
+   ![CI-2](images/CI-2.jpg)
 2. Given uniform distributions X and Y and the mean 0 and standard deviation 1 for both,
    what’s the probability of 2X > Y?
-   ![2x > y](2xy.jpg)
+   ![2x > y](images/2xy.jpg)
    As you see this question is super easy, but I couldn't answer 😂 because I
    didn't expect these kinds of questions so shout out to you, they ask something like this expect it.
 
@@ -167,7 +167,7 @@ optimization, I've seen the algorithm and this is something I can't understand b
 
 # binary cross entropy
 
-![](binary_cross_entopy.png)
+![](images/binary_cross_entropy.png)
 
 # Imputation methods
 
@@ -203,7 +203,7 @@ interview:<br/>
    objective is to find matrix factors W with size n*k and H is size k\*m in which R is close to WH. As these matrices are
    completed, the predicted rating of user u to item i (r at index u and i) can be estimated by the inner product of the
    corresponding user-item feature vector pairs.
-   ![](MF.jpg)
+   ![](images/MF.jpg)
    Estimating the parameters of W and H can be achieved by searching around the global (or local) minimum of the quadratic
    cost function F and once it's done, the other missing values can be estimated by the inner product too.
 
@@ -333,7 +333,7 @@ and another one with just four samples, we determine four quartiles for the larg
    Check [here](https://github.com/elahe-dastan/jaraghe)
 
 6. Prove Pythagoras.
-   ![proof](pythagoras.jpg)
+   ![proof](images/pythagoras.jpg)
 
 I had to do a **code challenge** for digikala too which is in a separate repository, check [here](https://github.com/elahe-dastan/digikala-datascientist-interview)
 
